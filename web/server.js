@@ -8,7 +8,6 @@ const base = `${__dirname}/public`;
 
 //middleware to server static files
 app.use(express.static('public'));
-
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
@@ -17,10 +16,9 @@ app.use((req, res, next) => {
 	next();
 });
 
-
 //route middleware for the root URI path
 app.get('/', function (req, res) {
-	res.sendFile(`${base}/control.html`);
+	res.sendFile(`${base}/landing.html`);
 });
 
 //start the web server and listen to requests on the specified port

@@ -12,27 +12,35 @@
 	<body>
 		<div class="container">
 			<div id="navbar"></div>
-
-		</div>
-		<div style="width: 80%; margin-left:10%">
-			<h1>Control</h1>
-			<select class="form-control" style="margin-bottom: 15px;">
-  				<option>Building Select</option>
-			</select>
-			<select class="form-control" style="margin-bottom: 15px;">
-  				<option>Zone Select</option>
-			</select>
-			<button class="btn btn-success" id="on_off">On/Off</button>
 			
 		</div>
+		<div style="width: 80%; margin-left:10%">
+			<h2 >Configure Device</h2>
+		</div>
+		
+		<form style="width: 80%; margin-left:10%">
+			<div class="form-group">
+				<label for="deviceID">Device ID</label>
+				<input type="text" class="form-control" id="deviceID" />
+			</div>
+			<div class="form-group">
+				<label for="BuildingID">Building ID</label>
+				<input type="text" class="form-control" id="BuildingID" />
+			</div>
+			<div class="form-check" style="margin-bottom: 15px;">
+			    <input type="checkbox" class="form-check-input" id="securityCheck">
+			    <label class="form-check-label" for="securityCheck">Security Light</label>
+			</div>
+			
+			<button class="btn btn-success" id="add-device">Add/Update</button>
+			<button class="btn btn-success" id="remove-device" >Remove</button>
+		</form>
 		<div style="margin-bottom: 50px;"></div>
 		<div id="footer"></div>
 		
 	</body>
-	
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="app.js"></script>
-	
 </html>
