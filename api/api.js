@@ -1,7 +1,8 @@
+const { UNAME, PASSWORD } = process.env;
 const port = process.env.PORT || 5000;
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://gmcintyre:7bQv6jD28SKKqxz0@cluster0.e4puu.mongodb.net/lights?retryWrites=true&w=majority";
+const uri = "mongodb+srv://"+UNAME+":"+PASSWORD+"@cluster0.e4puu.mongodb.net/lights?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const express = require('express');
