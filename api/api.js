@@ -8,6 +8,14 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 const express = require('express');
 const app = express();
 
+app.use(express.static('public'));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-RequestedWith, Content-Type, Accept");
+    next();
+});
+
 client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object

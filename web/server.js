@@ -6,8 +6,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const base = `${__dirname}/public`;
 
-//middleware to server static files
-app.use(express.static('public'));
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
@@ -19,6 +17,10 @@ app.use((req, res, next) => {
 //route middleware for the root URI path
 app.get('/', function (req, res) {
 	res.sendFile(`${base}/landing.html`);
+});
+
+app.get('/send-command', (req, res) => {
+	res.sendFile(`${base}/command.html`);
 });
 
 //start the web server and listen to requests on the specified port
