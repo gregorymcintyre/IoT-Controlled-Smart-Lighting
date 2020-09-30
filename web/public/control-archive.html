@@ -12,48 +12,51 @@
 	<body>
 		<div class="container">
 			<div id="navbar"></div>
+
 		</div>
 		<div style="width: 80%; margin-left:10%">
-			<h1>Zone Configuration</h1>
-			
-			<div class="form-group">
-			<label for="buildingcontrolselect">Building Select</label>
-			<select class="form-control" id="buildingcontrolselect">
-				<option>Select Building</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+			<h1>Control</h1>
+			<!--
+			<select class="form-control" style="margin-bottom: 15px;">
+  				<option>Building Select</option>
 			</select>
-			</div>
-			
-			<div class="form-group">
-			<label for="zoneselect">Zone Select</label>
-			<select class="form-control" id="zoneselect">
-				<option>Select Zone</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+			<select class="form-control" style="margin-bottom: 15px;">
+  				<option>Zone Select</option>
 			</select>
+			<button class="btn btn-success" id="on_off">On/Off</button>
+			-->
+			
+<!--			<div class="form-group">
+				<label for="deviceID">Device</label>
+				<textarea type="text" textarea rows="1" class="form-control" id="deviceID"></textarea>
+			</div>
+-->			
+			  <div class="form-group">
+			  	<label for="deviceID">Device</label>
+			  	<input type="text" class="form-control" id="deviceID" placeholder="ID #">
+			  </div>
+			
+			
+			<div class="form-group" style="margin-bottom: 15px;">
+				<label for="command" >Status</label>
+				<select class="form-control" type="text" id="command">
+  					<option>Select..</option>
+  					<option>On</option>
+  					<option>Off</option>
+				</select>
 			</div>
 			
-			<button class="btn btn-success" id="remove-zone" style="margin-bottom: 15px;">Remove Zone</button>
-			
-			<div class="form-group">
-				<label for="zoneID">Zone ID</label>
-				<input type="text" class="form-control" id="zoneID" />
-			</div>
-			
-			<button class="btn btn-success" id="add-zone" style="margin-bottom: 15px;">Add Zone</button>
+			<button class="btn btn-success" id="send-command">Send</button>
 			
 		</div>
 		<div style="margin-bottom: 50px;"></div>
 		<div id="footer"></div>
 		
 	</body>
+	
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="app.js"></script>
+	
 </html>

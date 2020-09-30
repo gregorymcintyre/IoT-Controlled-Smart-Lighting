@@ -26,8 +26,15 @@ client.on('connect', () => {
 });
 
 app.post('/send-command', (req, res) => {
-	const { deviceID, command } = req.body;
-	const topic = `/gmcintyre/${deviceID}/`;
+	const { deviceID, status, effect } = req.body;
+	var topic;
+	if (deviceID !="All") topic = `/gmcintyre/${deviceID}/`;
+	else topic = `/gmcintyre/`
+	var command = `{"status":${status}, "effect":${effect}}`;
+	
+	console.log(topic);
+	console.log(command);
+	
 	client.publish(topic, command, () => {
 		res.send('published new message');
 	});
