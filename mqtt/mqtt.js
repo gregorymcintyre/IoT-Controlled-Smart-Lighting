@@ -1,12 +1,10 @@
 const { URL, UNAME, PASSWORD } = process.env;
-
+const port = process.env.PORT || 5001;
 const mqtt = require('mqtt');
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-
-app.use(express.static('public'));
 
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -14,8 +12,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-const port = process.env.PORT || 5001;
-
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 

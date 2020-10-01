@@ -70,14 +70,14 @@ void setup() {
  
   // Attempt to connect to the server with the ID "myClientID"
   if (mqttClient.connect("arduino-101")) {
-    Serial.println("MQTT Connection has been established, well done");
+    Serial.println("MQTT Connection has been established");
     // Establish the subscribe event
     mqttClient.setCallback(callback);
   } else {
     Serial.println("Looks like the MQTT server connection failed...");
   }
 
-  mqttClient.subscribe("/gmcintyre/101/");
+  mqttClient.subscribe("/gmcintyre/1/");
 
   strip1.begin();
     strip2.begin();
@@ -145,10 +145,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
     payload_s += (char)payload[i];
   }
 
-  if(payload_s == "1") rainbow(20);
-  else {
-    colorWipe(strip1.Color(0, 0, 0), 50);
-  }
+  if(payload_s == "{\"status\":1, \"effect\":1}") colorWipe(strip1.Color(0, 255, 0), 50);
+  else if (payload_s == "{\"status\":1, \"effect\":2}") colorWipe(strip1.Color(0, 0, 255), 50);
+  else colorWipe(strip1.Color(0, 0, 0), 50);
  
   Serial.println();
   Serial.println("-----------------------");

@@ -3,21 +3,18 @@ const express = require('express');
 const app = express();
 const fs = require("fs");
 const readline = require('readline');
-var deviceArray = [];
 
 //port for the web server to listen to and a base url
 const port = process.env.PORT || 3000;
 const base = `${__dirname}/public`;
 
-app.use(express.static('public'));
-
-app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-RequestedWith, Content-Type, Accept");
+    next();
 });
 
-processLineByLine();
+app.use(express.static('public'));
 
 //route middleware for the root URI path
 app.get('/', function (req, res) {	
@@ -36,16 +33,3 @@ app.listen(port, () => {
 app.get('*', (req, res) => {
 	res.sendFile(`${base}/404.html`);
 });
-
-async function processLineByLine() {
-  const fileStream = fs.createReadStream('deviceList.txt');
-
-  const rl = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity
-  });
-  for await (const line of rl) {
-    deviceArray.push(`${line}`);
-  }
-  console.log(deviceArray);
-}
